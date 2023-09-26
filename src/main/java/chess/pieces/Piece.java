@@ -10,10 +10,13 @@ public abstract class Piece {
     private final PieceColor color;
     private final Icon pieceIcon;
 
+    private boolean isAlive;
+
     public Piece(Square currentSquare, PieceColor color, String pieceName) {
         this.currentSquare = currentSquare;
         this.currentSquare.setPiece(this);
         this.color = color;
+        isAlive = true;
         pieceIcon = setupIcon(pieceName);
     }
 
@@ -26,7 +29,31 @@ public abstract class Piece {
         return new ImageIcon(pieceImage);
     }
 
+    public void move(Square destinationSquare) {
+        currentSquare.setPiece(null);
+        currentSquare = destinationSquare;
+        currentSquare.setPiece(this);
+    }
+
+
+    public void capture() {
+
+    }
+
+
     public Icon getPieceIcon() {
         return pieceIcon;
+    }
+
+    public PieceColor getColor() {
+        return color;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
     }
 }

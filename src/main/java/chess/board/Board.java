@@ -55,6 +55,7 @@ public class Board {
         }
     }
 
+
     public Square[][] getSquareBoard() {
         return squareBoard;
     }

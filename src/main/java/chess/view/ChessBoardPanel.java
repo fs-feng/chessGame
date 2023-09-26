@@ -1,11 +1,14 @@
 package chess.view;
 
 import chess.board.Board;
+import chess.game.Move;
 import chess.pieces.King;
 import chess.pieces.Piece;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +21,11 @@ public class ChessBoardPanel extends JPanel {
     private SquareButton[][] boardButtons;
     private GridBagConstraints gbc = new GridBagConstraints();
 
+
     public ChessBoardPanel() {
         this.setLayout(new GridBagLayout());
         setupBoard();
     }
-
 
 
     private void setupBoard() {
@@ -41,6 +44,8 @@ public class ChessBoardPanel extends JPanel {
                 gbc.gridx = row + 1;
                 gbc.gridy = col + 1;
                 this.add(boardButtons[col][row], gbc);
+
+
             }
         }
     }
