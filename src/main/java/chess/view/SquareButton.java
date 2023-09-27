@@ -49,22 +49,25 @@ public class SquareButton extends JButton {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (square.getPiece() != null) {
-                    selectedPiece = square.getPiece();
-                    selectedButton = button;
-                } else if (selectedPiece.getColor() == square.getPiece().getColor() && square.getPiece() != null) {
-                    selectedPiece = square.getPiece();
-                    selectedButton = button;
+                    if (selectedPiece == null) {
+                        selectedPiece = square.getPiece();
+                        selectedButton = button;
+                    } else if (selectedPiece.getColor() == square.getPiece().getColor()) {
+                        selectedPiece = square.getPiece();
+                        selectedButton = button;
+                    } else {
+                        selectedPiece.move(getSquare());
+                        setPieceIcon();
+                        selectedButton.setIcon(null);
+                        selectedButton = null;
+                        selectedPiece = null;
+                    }
                 } else if (selectedPiece != null) {
                     selectedPiece.move(getSquare());
                     setPieceIcon();
                     selectedButton.setIcon(null);
                     selectedButton = null;
                     selectedPiece = null;
-                }
-
-                if (square.getPiece() != null) {
-                    selectedPiece = square.getPiece();
-
                 }
             }
 
