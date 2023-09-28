@@ -35,6 +35,15 @@ public abstract class Piece {
         currentSquare.setPiece(this);
     }
 
+    public void move(Square destinationSquare, Piece killedPiece) {
+        currentSquare.setPiece(null);
+        currentSquare = destinationSquare;
+        currentSquare.setPiece(this);
+
+        killedPiece.setCurrentSquare(null);
+        killedPiece.setAlive(false);
+    }
+
 
     public void capture() {
 
@@ -55,5 +64,14 @@ public abstract class Piece {
 
     public void setAlive(boolean alive) {
         isAlive = alive;
+    }
+
+
+    public Square getCurrentSquare() {
+        return currentSquare;
+    }
+
+    public void setCurrentSquare(Square currentSquare) {
+        this.currentSquare = currentSquare;
     }
 }

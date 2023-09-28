@@ -27,6 +27,32 @@ public class Square {
         return piece;
     }
 
+
+    public void setSquareButton(SquareButton squareButton) {
+        this.squareButton = squareButton;
+    }
+
+    public void selectPiece() {
+        if (piece != null) {
+            if (selectedPiece == null) {
+                selectedPiece = piece;
+            } else if (selectedPiece.getColor() == piece.getColor()) {
+                selectedPiece = piece;
+            } else {
+                selectedPiece.getCurrentSquare().getSquareButton().setIcon(null);
+                selectedPiece.move(this, this.getPiece());
+                selectedPiece.getCurrentSquare().getSquareButton().setPieceIcon();
+                selectedPiece = null;
+            }
+        } else if (selectedPiece != null) {
+            selectedPiece.getCurrentSquare().getSquareButton().setIcon(null);
+            selectedPiece.move(this);
+            selectedPiece.getCurrentSquare().getSquareButton().setPieceIcon();
+            selectedPiece = null;
+        }
+    }
+
+
     public int getRow() {
         return row;
     }
@@ -39,15 +65,4 @@ public class Square {
         return squareButton;
     }
 
-    public void setSquareButton(SquareButton squareButton) {
-        this.squareButton = squareButton;
-    }
-
-    public void selectPiece() {
-        if (selectedPiece == null && piece != null) {
-            selectedPiece = piece;
-        } else if (selectedPiece.getColor() == piece.getColor()) {
-            selectedPiece = piece;
-        }
-    }
 }
