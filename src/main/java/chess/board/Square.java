@@ -36,15 +36,20 @@ public class Square {
         if (piece != null) {
             if (selectedPiece == null) {
                 selectedPiece = piece;
+                squareButton.selectPiece();
             } else if (selectedPiece.getColor() == piece.getColor()) {
+                selectedPiece.getCurrentSquare().getSquareButton().deselectPiece();
                 selectedPiece = piece;
+                squareButton.selectPiece();
             } else {
+                selectedPiece.getCurrentSquare().getSquareButton().deselectPiece();
                 selectedPiece.getCurrentSquare().getSquareButton().setIcon(null);
                 selectedPiece.move(this, this.getPiece());
                 selectedPiece.getCurrentSquare().getSquareButton().setPieceIcon();
                 selectedPiece = null;
             }
         } else if (selectedPiece != null) {
+            selectedPiece.getCurrentSquare().getSquareButton().deselectPiece();
             selectedPiece.getCurrentSquare().getSquareButton().setIcon(null);
             selectedPiece.move(this);
             selectedPiece.getCurrentSquare().getSquareButton().setPieceIcon();

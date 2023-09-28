@@ -29,6 +29,8 @@ public abstract class Piece {
         return new ImageIcon(pieceImage);
     }
 
+    //public abstract void legalMoves();
+
     public void move(Square destinationSquare) {
         currentSquare.setPiece(null);
         currentSquare = destinationSquare;

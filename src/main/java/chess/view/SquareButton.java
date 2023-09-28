@@ -10,9 +10,6 @@ import java.awt.event.ActionListener;
 
 
 public class SquareButton extends JButton {
-    private static Piece selectedPiece = null;
-    private static SquareButton selectedButton = null;
-    private SquareButton button = this;
     private Square square;
 
 
@@ -52,6 +49,13 @@ public class SquareButton extends JButton {
 
     }
 
+    public void selectPiece() {
+        this.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
+    }
+
+    public void deselectPiece() {
+        this.setBorder(null);
+    }
 
 
     public void setPieceIcon() {
